@@ -1,4 +1,3 @@
-//deploy.sh
 #!/usr/bin/env sh
 # 當發生錯誤時終止腳本運行
 set -e
@@ -10,5 +9,5 @@ git init //因為dist資料夾預設是被ignore的，因此在進入dist資料�
 git add -A
 git commit -m 'deploy'
 
-git push -f https://github.com/Jason-lin80826/Vue-movieSearch.git main:gh-pages
+git push -f git@github.com:Jason-lin80826/Vue-movieSearch.git master:gh-pages
 cd -
