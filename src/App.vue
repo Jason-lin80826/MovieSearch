@@ -1,14 +1,14 @@
 <template>
-  <HelloWorld/>
+  <MovieSearch/>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import MovieSearch from './components/MovieSearch.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    MovieSearch
   }
 }
 </script>
