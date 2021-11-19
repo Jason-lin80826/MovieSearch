@@ -6,7 +6,7 @@
       <a-input v-model="year" placeholder="請輸入電影年份" />
       <a-button type="primary" @click="onClcik">搜尋</a-button>
     </div>
-    <a-table class="ant-table-striped" :columns="columns" size="middle" :data-source="data" :rowClassName="(record, index) => (index % 2 === 1 ? 'table-striped' : null)" bordered :pagination="false">
+    <a-table class="ant-table-striped" :columns="columns" size="middle" :data-source="data" :rowClassName="(record, index) => (index % 2 === 1 ? 'table-striped' : null)" bordered :pagination="false" fixed=true>
       <button slot-scope="text, record" slot="action" href="javascript:;" @click="() => handleDetail(record.key)">詳細資訊</button>
     </a-table>
     <a-spin class="loading" v-if="isLoading"/>
