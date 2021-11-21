@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="title">電影資料庫</div>
-    <Input :getMovieList="getMovieList"/>
+    <Input @changeList="listHandler"/>
     <a-table class="ant-table-striped" :columns="columns" size="middle" :data-source="data" :rowClassName="(record, index) => (index % 2 === 1 ? 'table-striped' : null)" bordered :pagination="false" fixed=true>
       <button slot-scope="text, record" slot="detail" href="javascript:;" @click="() => handleDetail(record.key)">詳細資訊</button>
     </a-table>
@@ -67,11 +67,8 @@ export default {
     getMovieList(title,page,type='') {
       this.title = title
       this.type = type
-      this.isLoading = true
-      if(!this.title) {
-        return message.info('請輸入電影名稱');
-      }
       const url = `https://www.omdbapi.com/?apikey=${key}&s=${title}&page=${page}&type=${type}`
+      this.isLoading = true
       axios.get(url, {
         headers: {
           accept: "application/json",
@@ -124,6 +121,11 @@ export default {
     },
     handleOk() {
       this.visible = false;
+    },
+    listHandler(title, type) {
+      this.title = title
+      this.type = type
+      this.getMovieList(title, 1, type)
     },
   },
   created () {

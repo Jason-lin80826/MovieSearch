@@ -6,10 +6,9 @@
   </div>
 </template>
 <script>
+import { message } from 'ant-design-vue';
+
 export default {
-  props : {
-    getMovieList:Function
-  },
   data() {
     return {
       title: '',
@@ -18,8 +17,11 @@ export default {
   },
   methods: {
     onClcik() {
-      this.getMovieList(this.title, 1, this.type)
-    },
+      if(!this.title) {
+        return message.info('請輸入電影名稱');
+      }
+      this.$emit('changeList',this.title,this.type)
+    }
   }
 }
 </script>
